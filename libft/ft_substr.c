@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 16:29:25 by azaghlou          #+#    #+#             */
-/*   Updated: 2022/10/07 15:46:51 by azaghlou         ###   ########.fr       */
+/*   Created: 2022/10/11 10:11:36 by azaghlou          #+#    #+#             */
+/*   Updated: 2022/10/19 12:13:03 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strchr(const char *s, int c)
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
-    int i = 0;
-
-    while (s[i] && s[i] != c)
-        i++;
-    if (s[i] == c)
-        return ((char *)&s[i]);
-    return (0);
+    char *ss;
+    size_t i;
+    i = 0;
+    if (!s)
+        return 0;
+    ss = malloc (sizeof (char) * (len + 1) );
+    if (!ss)
+        return 0;
+    if (start < ft_strlen(s))
+    {
+        while (i < len)
+        {
+            ss[i] = s[start + i];
+            i++;
+        }
+    }
+    ss[i] = '\0';
+    return ss;
 }
-
-// #include <stdio.h>
-// int main()
-// {
-//     const char *str = "amine";
-//     int x = 'm' ;
-//     printf("strchr :%s", strchr(str, x ));
-//     printf("\nft_strchr :%s", ft_strchr(str, x ));
-// }

@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 13:11:54 by azaghlou          #+#    #+#             */
-/*   Updated: 2022/10/14 10:49:25 by azaghlou         ###   ########.fr       */
+/*   Created: 2022/10/07 21:56:32 by azaghlou          #+#    #+#             */
+/*   Updated: 2022/10/08 12:38:21 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char *ft_memchr(const void *s, int c, size_t n)
 {
-    size_t j;
-    
-    j = 0;
-    if (dstsize == 0)
-        return (ft_strlen(src));
-    while (j < dstsize - 1 && src[j] != '\0')
+    size_t i = 0;
+    char *aptx;
+
+    aptx = (char *)s;
+
+    while (i < n)
     {
-        dst[j] = src[j];
-        j++;
+        if (aptx[i] == c)
+            return (&aptx[i]);
+        i++;
     }
-    dst[j] = '\0';
-    return (ft_strlen(src));
+    return (0);  
 }
 
 // #include <stdio.h>
 // int main()
 // {
-//     char s1[] = "amine";
-//     char s2[] = "zaghloul";
-//     strlcpy(s1,s2,5);
-//     printf("strlcpy :%s",s1);
-//     // ft_strlcpy(s1,s2,5);
-//     // printf("\nft_strlcpy :%s",s1);
+//     printf ("%s", ft_memchr("amine", 'i', 10));
 // }

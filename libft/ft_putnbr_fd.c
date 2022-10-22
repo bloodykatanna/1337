@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 16:29:25 by azaghlou          #+#    #+#             */
-/*   Updated: 2022/10/07 15:46:51 by azaghlou         ###   ########.fr       */
+/*   Created: 2022/10/10 17:22:23 by azaghlou          #+#    #+#             */
+/*   Updated: 2022/10/13 19:00:05 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strchr(const char *s, int c)
+void ft_putnbr_fd(int n, int fd)
 {
-    int i = 0;
-
-    while (s[i] && s[i] != c)
-        i++;
-    if (s[i] == c)
-        return ((char *)&s[i]);
-    return (0);
+    long int s;
+    s = n;
+    if (s < 0)
+    {
+        s *= -1;
+        ft_putchar_fd('-', fd);
+    }
+    if (s >= 10)
+    {
+        ft_putnbr_fd(s / 10, fd);
+        ft_putnbr_fd(s % 10, fd);
+    }
+    else
+        ft_putchar_fd(s + 48, fd);
 }
 
-// #include <stdio.h>
+
 // int main()
 // {
-//     const char *str = "amine";
-//     int x = 'm' ;
-//     printf("strchr :%s", strchr(str, x ));
-//     printf("\nft_strchr :%s", ft_strchr(str, x ));
+//     int a= -5555;
+//     //fd = 
+//     ft_putnbr_fd(a, 1);
 // }

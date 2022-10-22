@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 16:29:25 by azaghlou          #+#    #+#             */
-/*   Updated: 2022/10/07 15:46:51 by azaghlou         ###   ########.fr       */
+/*   Created: 2022/10/11 15:47:37 by azaghlou          #+#    #+#             */
+/*   Updated: 2022/10/15 19:58:30 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strchr(const char *s, int c)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-    int i = 0;
-
-    while (s[i] && s[i] != c)
+    char *ss;
+    int i;
+    int j;
+    i = 0;
+    j = 0;
+    // if (!s1 || !s2)
+    //     return 0;
+    ss = malloc (sizeof (char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+    if (!ss)
+        return 0;
+    while (s1[i])
+    {
+        ss[i] = s1[i];
         i++;
-    if (s[i] == c)
-        return ((char *)&s[i]);
-    return (0);
+    }
+    while (s2[j])
+    {
+        ss[i] = s2[j];
+        j++;
+        i++;
+    }
+    ss[i] = '\0';
+    return ss;
 }
-
-// #include <stdio.h>
-// int main()
-// {
-//     const char *str = "amine";
-//     int x = 'm' ;
-//     printf("strchr :%s", strchr(str, x ));
-//     printf("\nft_strchr :%s", ft_strchr(str, x ));
-// }

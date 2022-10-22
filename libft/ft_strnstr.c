@@ -6,7 +6,7 @@
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 20:20:57 by azaghlou          #+#    #+#             */
-/*   Updated: 2022/10/03 22:12:10 by azaghlou         ###   ########.fr       */
+/*   Updated: 2022/10/08 19:45:25 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,27 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 
     if (s2[0] == '\0')
         return (s1);
-    if(len == 0)
-        return(NULL);
+    if (len == 0)
+        return (NULL);
     while (s1[i + j] != '\0' && i < len)
     {
         j = 0;
-
         while (i + j < len && s1[i + j] == s2[j])
         {
             j++;
             if (s2[j] == '\0')
                 return (&s1[i]);
         }
-
         i++;
     }
-    return (NULL);
+    return (0);
 }
 
 // #include <stdio.h>
 // int main()
 // {
 //     char *s1 = "london";
-//     char *s2 = "lon";
-//     printf("ft_strnstr :%s", ft_strnstr(s1, s2, 0));
-//     printf("\nstrnstr :%s", strnstr(s1, s2, 0));
+//     char *s2 = "nd";
+//     printf("ft_strnstr :%s", ft_strnstr(s1, s2, 3));
+//     printf("\nstrnstr :%s", strnstr(s1, s2, 3));
 // }

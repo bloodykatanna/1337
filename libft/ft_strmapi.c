@@ -1,40 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 13:11:54 by azaghlou          #+#    #+#             */
-/*   Updated: 2022/10/14 10:49:25 by azaghlou         ###   ########.fr       */
+/*   Created: 2022/10/16 14:52:18 by azaghlou          #+#    #+#             */
+/*   Updated: 2022/10/18 20:42:35 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    size_t j;
-    
+    int j;
+    size_t i;
+    char *str;
+
     j = 0;
-    if (dstsize == 0)
-        return (ft_strlen(src));
-    while (j < dstsize - 1 && src[j] != '\0')
+    i = ft_strlen(s);
+    str = malloc(sizeof(char) * i + 1);
+    if (!str)
+        return NULL;
+    while (s[j])
     {
-        dst[j] = src[j];
+        str[j] = f(j, s[j]);
         j++;
     }
-    dst[j] = '\0';
-    return (ft_strlen(src));
+    str[j] = '\0';
+    return str;
 }
+
+// char fss(unsigned int i, char s)
+// {
+//     (void) i;
+//     if (s == 'a')
+//         s = 'A';
+//     return s;
+// }
 
 // #include <stdio.h>
 // int main()
 // {
-//     char s1[] = "amine";
-//     char s2[] = "zaghloul";
-//     strlcpy(s1,s2,5);
-//     printf("strlcpy :%s",s1);
-//     // ft_strlcpy(s1,s2,5);
-//     // printf("\nft_strlcpy :%s",s1);
+//     char *ss = "amineaminezaghloulzaghloulaaconan";
+//     printf("%s", ft_strmapi(ss, fss));
 // }

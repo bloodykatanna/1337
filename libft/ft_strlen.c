@@ -6,7 +6,7 @@
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 14:53:57 by azaghlou          #+#    #+#             */
-/*   Updated: 2022/10/06 11:06:34 by azaghlou         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:34:13 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,9 @@ size_t  ft_strlen(const char *aptx)
     }
     return(i);
 }
+// #include <stdio.h>
+// int main()
+// {
+//     const char *ss = "aptx4869";
+//     printf("%zu",ft_strlen(ss));
+// }

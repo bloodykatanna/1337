@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 13:11:54 by azaghlou          #+#    #+#             */
-/*   Updated: 2022/10/14 10:49:25 by azaghlou         ###   ########.fr       */
+/*   Created: 2022/10/10 15:28:40 by azaghlou          #+#    #+#             */
+/*   Updated: 2022/10/16 21:00:52 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void ft_putstr_fd(char *s, int fd)
 {
-    size_t j;
-    
-    j = 0;
-    if (dstsize == 0)
-        return (ft_strlen(src));
-    while (j < dstsize - 1 && src[j] != '\0')
+    int i = 0;
+    while (s[i])
     {
-        dst[j] = src[j];
-        j++;
+        write(fd, &s[i], 1);
+        i++;
     }
-    dst[j] = '\0';
-    return (ft_strlen(src));
 }
+//    filds  write(fd, caractere, size caractere)
+// 0 standard output r
+// 1 standard input  w
+// 2 standard error  rw error
+// 3
+// 4
 
+// #include <fcntl.h>
 // #include <stdio.h>
+
 // int main()
 // {
-//     char s1[] = "amine";
-//     char s2[] = "zaghloul";
-//     strlcpy(s1,s2,5);
-//     printf("strlcpy :%s",s1);
-//     // ft_strlcpy(s1,s2,5);
-//     // printf("\nft_strlcpy :%s",s1);
+//     char *s;
+//     s = "aptx4869";
+//     // open("a.txt", O_CREAT);
+//     int fd = open("a.txt",O_CREAT | O_RDWR);
+//     ft_putstr_fd(s, fd);
 // }

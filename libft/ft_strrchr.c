@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azaghlou <azaghlou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 16:29:25 by azaghlou          #+#    #+#             */
-/*   Updated: 2022/10/07 15:46:51 by azaghlou         ###   ########.fr       */
+/*   Created: 2022/10/07 15:02:39 by azaghlou          #+#    #+#             */
+/*   Updated: 2022/10/20 11:40:58 by azaghlou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strchr(const char *s, int c)
+char *ft_strrchr(const char *s, int c)
 {
     int i = 0;
-
-    while (s[i] && s[i] != c)
-        i++;
-    if (s[i] == c)
-        return ((char *)&s[i]);
+    char *ap;
+    char tx;
+    ap = (char *)s;
+    tx = (char)c;
+    i = ft_strlen(ap);
+    if (ap[0] == '\0' )
+        return 0;
+    while (ap[i] != ap[0] && ap[i] != tx)
+        i--;
+    if (ap[i] == tx)
+        return (&ap[i]);
     return (0);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-//     const char *str = "amine";
-//     int x = 'm' ;
-//     printf("strchr :%s", strchr(str, x ));
-//     printf("\nft_strchr :%s", ft_strchr(str, x ));
-// }
